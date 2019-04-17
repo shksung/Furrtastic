@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dao.UserDao;
 import com.model.User;
 
-//@RestController
+@RestController
 public class LoginController {
-//	@Autowired
-//	private UserDao userdao;
-//	
-//	public LoginController() {
-//		
-//	}
-//	
-//	@CrossOrigin(origins="http://localhost:4200")
-//	@RequestMapping(value= "/login", method= RequestMethod.GET,
-//	params= {"username"}
-//			)
-//	
-//	public User getUser( String username) {
-//		return userdao.selectByUsername(username);
-//	}
+	@Autowired
+	private UserDao userdao;
+	
+	public LoginController() {
+		
+	}
+	
+	@CrossOrigin(origins="http://localhost:4200")
+	@RequestMapping(value= "/login.app", method= {RequestMethod.GET, RequestMethod.POST}
+			)
+	
+	public @ResponseBody User getUser(@RequestBody User user) {
+		System.out.println("What's good biatch");
+		return userdao.selectByUsername(user.getUsername());
+	}
 	
 }

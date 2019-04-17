@@ -19,22 +19,22 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int userID;
 	
-	@Column(name= "first_name", unique= false, nullable= false)
+	@Column(name= "first_name", unique= false, nullable= true)
 	private String firstName;
 	
-	@Column(name= "last_name", unique= false, nullable= false)
+	@Column(name= "last_name", unique= false, nullable= true)
 	private String lastName;
 	
-	@Column(name= "email", unique= true, nullable= false)
+	@Column(name= "email", unique= true, nullable= true)
 	private String email;
 	
-	@Column(name= "username", unique= true, nullable= false)
+	@Column(name= "username", unique= true, nullable= true)
 	private String username;
 	
-	@Column(name= "password", unique= true, nullable= false)
+	@Column(name= "password", unique= true, nullable= true)
 	private String password;
 	
-	@Column(name= "address", unique= true, nullable= true) //remember to make these back to nullable = false
+	@Column(name= "address", unique= true, nullable= true) //remember to make these back to nullable = false (SIKE)
 	private String address;
 	
 	@Column(name= "state", unique= false, nullable= true)
@@ -79,11 +79,13 @@ public class User {
 		
 	}
 	
+	public User(String username, String password) {
+		super();
+		this.username= username;
+		this.password= password;
+	}
 	
-	
-
-	public User(String firstName, String lastName, String email, String username, String password, String address,
-			String state, String city, String zip) {
+	public User (String firstName, String lastName, String email, String address, String state, String city, String zip,  String username, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -94,7 +96,23 @@ public class User {
 		this.state = state;
 		this.city = city;
 		this.zip = zip;
+		
 	}
+	
+
+//	public User(String firstName, String lastName, String email, String username, String password, String address,
+//			String state, String city, String zip) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.email = email;
+//		this.username = username;
+//		this.password = password;
+//		this.address = address;
+//		this.state = state;
+//		this.city = city;
+//		this.zip = zip;
+//	}
 
 	public User(String firstName, String lastName, String email, String username, String password) {
 		super();

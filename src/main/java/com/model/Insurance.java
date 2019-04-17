@@ -53,6 +53,10 @@ public class Insurance {
 		this.coverage = coverage;
 		this.monthly = monthly;
 	}
+	
+	public Insurance () {
+		
+	}
 
 	public int getInsuranceID() {
 		return insuranceID;

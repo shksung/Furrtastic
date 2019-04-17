@@ -15,6 +15,7 @@ import com.util.HibernateUtil;
 @Repository ("userDao")
 
 public class UserDao {
+	
 
 	
 	public UserDao() {
@@ -37,7 +38,9 @@ public class UserDao {
 		//User user= ses.get(User.class, username);
 		List<User> userList = ses.createQuery("from User",User.class).list();
 		User user1 = null;
+		System.out.println(userList);
 		for (User user : userList) {
+			System.out.println(user);
 			if (user.getUsername().equals(username))
 				user1 = user;
 		}

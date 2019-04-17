@@ -26,20 +26,19 @@ public class SignupController {
 	
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@RequestMapping(value = "/signup", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/signup.app", method= {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody void insertUser (
 			
-			/*
-			@RequestParam(value="fname")String fname, 
-			@RequestParam(value="lname")String lname, @RequestParam(value="email") String email,
-			@RequestParam(value="phoneNum")String phoneNum, @RequestParam(value="address")String address,
-			@RequestParam(value="state")String state, @RequestParam(value="city")String city,
-			@RequestParam(value="zipCode")String zipcode, @RequestParam(value="username")String username,
-			@RequestParam(value="password")String password
 			
-			*/
+//			@RequestParam(value="fname")String fname, 
+//			@RequestParam(value="lname")String lname, @RequestParam(value="email") String email,
+//			@RequestParam(value="phoneNum")String phoneNum, @RequestParam(value="address")String address,
+//			@RequestParam(value="state")String state, @RequestParam(value="city")String city,
+//			@RequestParam(value="zipCode")String zipcode, @RequestParam(value="username")String username,
+//			@RequestParam(value="password")String password
 			
 			@RequestBody User user
+		
 			
 			) {
 		

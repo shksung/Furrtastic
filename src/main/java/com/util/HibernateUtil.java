@@ -5,6 +5,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
+	
+	static {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	private static Session ses; 
 	private static SessionFactory sf= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	
