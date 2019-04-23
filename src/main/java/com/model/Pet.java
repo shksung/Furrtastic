@@ -12,6 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 @Entity
 @Table(name= "Pet")
 public class Pet {
@@ -20,51 +25,81 @@ public class Pet {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int petID;
 	
-	@Column(name= "name", unique= false, nullable= false)
+	@Column(name= "name", unique= false, nullable= true)
 	private String name;
 	
-	@Column(name= "type", unique= false, nullable= false)
+	@Column(name= "type", unique= false, nullable= true)
 	private String type;
 	
-	@Column(name= "weight", unique= false, nullable= false)
+	@Column(name= "weight", unique= false, nullable= true)
 	private String weight;
 	
-	@ManyToOne (fetch = FetchType.LAZY, cascade= CascadeType.ALL)
-	@JoinColumn (name= "user_id")
-	private User user ;
+	@Column(name= "age", unique= false, nullable= true)
+	private String age;
 	
-	@OneToOne (mappedBy = "pet", fetch= FetchType.EAGER)
-	private Insurance ins;
+	@Column(name= "condition", unique= false, nullable= true)
+	private String condition;
+	
+	@Column(name="user_id", unique= false, nullable= true)
+	private int owner ;
+	
+	@Column ( name = "amount", nullable = true)
+	private int amount;
 
-	public Pet(int petID, String name, String type, String weight, User owner) {
+	public Pet(int petID, String name, String type, String weight, int owner) {
 		super();
 		this.petID = petID;
 		this.name = name;
 		this.type = type;
 		this.weight = weight;
-		this.user = owner;
+		this.owner = owner;
 	}
 	
 	
-	public Pet(int petID, String name, String type, String weight, User user, Insurance ins) {
+	
+	public Pet(String name, String type, String weight, String age, String condition, int user) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.weight = weight;
+		this.age= age;
+		this.condition= condition;
+		this.owner = user;
+	}
+
+	
+	public Pet(String name, String type, String weight, String age, String condition, int user, int ins) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.weight = weight;
+		this.age = age;
+		this.condition = condition;
+		this.owner = user;
+		this.amount = ins;
+	}
+
+
+
+	public Pet(int petID, String name, String type, String weight, int user, int ins) {
 		super();
 		this.petID = petID;
 		this.name = name;
 		this.type = type;
 		this.weight = weight;
-		this.user = user;
-		this.ins = ins;
+		this.owner = user;
+		this.amount = ins;
 	}
 
 
 
-	public Insurance getIns() {
-		return ins;
+	public int getIns() {
+		return amount;
 	}
 
 
-	public void setIns(Insurance ins) {
-		this.ins = ins;
+	public void setIns(int ins) {
+		this.amount = ins;
 	}
 
 
@@ -104,13 +139,27 @@ public class Pet {
 		this.weight = weight;
 	}
 
-	public User getOwner() {
-		return user;
+	public int getOwner() {
+		return owner;
 	}
 
-	public void setOwner(User user) {
-		this.user = user;
+	public void setOwner(int user) {
+		this.owner = user;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Pet [petID=" + petID + ", name=" + name + ", type=" + type + ", weight=" + weight + ", age=" + age
+				+ ", condition=" + condition + ", owner=" + owner + ", amount=" + amount + "]";
+	}
+
+
+
+
+	
+	
 	
 	
 }

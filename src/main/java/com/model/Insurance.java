@@ -11,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 @Entity
 @Table(name= "Insurance")
 public class Insurance {
@@ -31,11 +35,10 @@ public class Insurance {
 	@Column(name= "monthly")
 	private float monthly; 
 	
-	@OneToOne (cascade = CascadeType.ALL, fetch= FetchType.EAGER)
-	@JoinColumn(name= "pet_id")
-	private Pet pet;
+	@Column(name= "pet_id")
+	private int pet;
 
-	public Insurance(int insuranceID, float amount, float deductible, String coverage, float monthly, Pet pet) {
+	public Insurance(int insuranceID, float amount, float deductible, String coverage, float monthly, int pet) {
 		super();
 		this.insuranceID = insuranceID;
 		this.amount = amount;
@@ -44,6 +47,31 @@ public class Insurance {
 		this.monthly = monthly;
 		this.pet = pet;
 	}
+	
+	
+
+	public Insurance(float amount, float deductible, String coverage, int pet) {
+		super();
+		this.amount = amount;
+		this.deductible = deductible;
+		this.coverage = coverage;
+		this.pet= pet;
+	}
+
+	
+	
+
+
+	public Insurance(float amount, float deductible, String coverage, float monthly, int pet) {
+		super();
+		this.amount = amount;
+		this.deductible = deductible;
+		this.coverage = coverage;
+		this.monthly = monthly;
+		this.pet = pet;
+	}
+
+
 
 	public Insurance(int insuranceID, float amount, float deductible, String coverage, float monthly) {
 		super();
@@ -98,18 +126,18 @@ public class Insurance {
 		this.monthly = monthly;
 	}
 
-	public Pet getPet() {
+	public int getPet() {
 		return pet;
 	}
 
-	public void setPet(Pet pet) {
+	public void setPet(int pet) {
 		this.pet = pet;
 	}
 
 	@Override
 	public String toString() {
 		return "Insurance [insuranceID=" + insuranceID + ", amount=" + amount + ", deductible=" + deductible
-				+ ", coverage=" + coverage + ", monthly=" + monthly + ", pet=" + pet + "]";
+				+ ", coverage=" + coverage + ", monthly=" + monthly + "]";
 	}
 	
 }

@@ -11,8 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 @Entity
 @Table(name= "Users")
+
 public class User {
 	@Id 
 	@Column (name= "user_id")
@@ -51,14 +56,11 @@ public class User {
 	
 	@Column(name= "pin", unique= true, nullable= true)
 	private String pin;
-	
-	@OneToMany(mappedBy = "user", fetch= FetchType.EAGER)
-	private List<Pet> petList;
-	
+
 
 
 	public User(int userID, String firstName, String lastName, String email, String username, String password,
-			String address, String state, String city, String zip, String card, String pin, List<Pet> petList) {
+			String address, String state, String city, String zip, String card, String pin) {
 		super();
 		this.userID = userID;
 		this.firstName = firstName;
@@ -72,7 +74,6 @@ public class User {
 		this.zip = zip;
 		this.card = card;
 		this.pin = pin;
-		this.petList = petList;
 	}
 	
 	public User () {
@@ -98,6 +99,10 @@ public class User {
 		this.zip = zip;
 		
 	}
+	
+//	public User (int id) {
+//		this.user
+//	}
 	
 
 //	public User(String firstName, String lastName, String email, String username, String password, String address,
@@ -219,19 +224,12 @@ public class User {
 		this.pin = pin;
 	}
 
-	public List<Pet> getPetList() {
-		return petList;
-	}
-
-	public void setPetList(List<Pet> petList) {
-		this.petList = petList;
-	}
 
 	@Override
 	public String toString() {
 		return "User [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", username=" + username + ", password=" + password + ", address=" + address + ", state=" + state
-				+ ", city=" + city + ", zip=" + zip + ", card=" + card + ", pin=" + pin + ", petList=" + petList + "]";
+				+ ", city=" + city + ", zip=" + zip + ", card=" + card + ", pin=" + pin + "]";
 	}
 	
 	
