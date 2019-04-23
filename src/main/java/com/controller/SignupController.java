@@ -25,7 +25,7 @@ public class SignupController {
 	}
 	
 	
-	@CrossOrigin(origins="http://localhost:4200")
+	@CrossOrigin(origins="18.216.185.182:4200")
 	@RequestMapping(value = "/signup.app", method= {RequestMethod.GET, RequestMethod.POST}, produces="application/json")
 	public @ResponseBody void insertUser (
 			

@@ -20,7 +20,7 @@ public class AddPetController {
 	@Autowired
 	private PetDao petdao;	
 	
-	@CrossOrigin(origins="http://localhost:4200")
+	@CrossOrigin(origins="18.216.185.182:4200")
 	@RequestMapping(value = "/pet.app", method= {RequestMethod.GET, RequestMethod.POST}, produces="application/json")
 	public @ResponseBody void insertPet (@RequestBody Pet pet) {
 		

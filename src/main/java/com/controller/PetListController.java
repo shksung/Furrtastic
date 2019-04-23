@@ -20,7 +20,7 @@ public class PetListController {
 	@Autowired
 	private PetDao petdao;	
 	
-	@CrossOrigin(origins="http://localhost:4200")
+	@CrossOrigin(origins="18.216.185.182:4200")
 	@RequestMapping(value = "/getpets.app", method= {RequestMethod.GET, RequestMethod.POST}, produces="application/json")
 	public @ResponseBody List <Pet> getPets(@RequestBody User user) {
 		System.out.println(user);

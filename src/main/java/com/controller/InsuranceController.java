@@ -20,7 +20,7 @@ public class InsuranceController {
 	private InsuranceDao insurancedao;
 	
 	
-	@CrossOrigin(origins="http://localhost:4200")
+	@CrossOrigin(origins="18.216.185.182:4200")
 	@RequestMapping(value = "/insurance.app", method= {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody void insertUser (@RequestBody Insurance insurance) {
 		
